@@ -415,7 +415,8 @@ export const galleryLoading = {
             }}
         />
     ),
-    href: 'https://extensions.turbowarp.org/',
+    // href: 'https://extensions.turbowarp.org/',
+    href: 'local/extensions/index.html',
     extensionId: 'gallery',
     iconURL: galleryIcon,
     description: (
@@ -441,7 +442,8 @@ export const galleryMore = {
             }}
         />
     ),
-    href: 'https://extensions.turbowarp.org/',
+    // href: 'https://extensions.turbowarp.org/',
+    href: 'local/extensions/index.html',
     extensionId: 'gallery',
     iconURL: galleryIcon,
     description: (
@@ -467,7 +469,8 @@ export const galleryError = {
             }}
         />
     ),
-    href: 'https://extensions.turbowarp.org/',
+    // href: 'https://extensions.turbowarp.org/',
+    href: 'local/extensions/index.html',
     extensionId: 'gallery',
     iconURL: galleryIcon,
     description: (

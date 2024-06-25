@@ -28,7 +28,14 @@ const isTrustedExtension = url => (
     url.startsWith('https://extensions.turbowarp.org/') ||
 
     // For development.
-    url.startsWith('http://localhost:8000/') ||
+    // url.startsWith('http://localhost:8000/') ||
+
+    // For local server.
+    url.startsWith('http://localhost') ||
+    url.startsWith('http://127.0.0.1') ||
+    url.startsWith('http://10.') ||
+    url.startsWith('http://172.') ||
+    url.startsWith('http://192.168.') ||
 
     extensionsTrustedByUser.has(url)
 );
