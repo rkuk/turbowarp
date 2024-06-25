@@ -55,7 +55,7 @@ const fetchLibrary = async () => {
         descriptionTranslations: extension.descriptionTranslations || {},
         extensionId: extension.id,
         // extensionURL: `https://extensions.turbowarp.org/${extension.slug}.js`,
-        extensionURL: `local/extensions/${extension.slug}.js`,
+        extensionURL: `${process.env.ROOT}local/extensions/${extension.slug}.js`,
         // iconURL: `https://extensions.turbowarp.org/${extension.image || 'images/unknown.svg'}`,
         iconURL: `local/extensions/${extension.image || 'images/unknown.svg'}`,
         tags: ['tw'],
@@ -81,7 +81,7 @@ const fetchLibrary = async () => {
         docsURI: extension.docs ? `local/extensions/${extension.slug}` : null,
         samples: extension.samples ? extension.samples.map(sample => ({
             // href: `${process.env.ROOT}editor?project_url=https://extensions.turbowarp.org/samples/${encodeURIComponent(sample)}.sb3`,
-            href: `${process.env.ROOT}editor?project_url=local/extensions/samples/${encodeURIComponent(sample)}.sb3`,
+            href: `${process.env.ROOT}editor?project_url=${process.env.ROOT}local/extensions/samples/${encodeURIComponent(sample)}.sb3`,
             text: sample
         })) : null,
         incompatibleWithScratch: true,
