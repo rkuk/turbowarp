@@ -55,7 +55,7 @@ const fetchLibrary = async () => {
         descriptionTranslations: extension.descriptionTranslations || {},
         extensionId: extension.id,
         // extensionURL: `https://extensions.turbowarp.org/${extension.slug}.js`,
-        extensionURL: `${process.env.ROOT}local/extensions/${extension.slug}.js`,
+        extensionURL: location.origin + `/local/extensions/${extension.slug}.js`,
         // iconURL: `https://extensions.turbowarp.org/${extension.image || 'images/unknown.svg'}`,
         iconURL: `local/extensions/${extension.image || 'images/unknown.svg'}`,
         tags: ['tw'],
@@ -66,12 +66,12 @@ const fetchLibrary = async () => {
             if (credit.link) {
                 return (
                     <a
-                        href={credit.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        key={credit.name}
+                    href={credit.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    key={credit.name}
                     >
-                        {credit.name}
+                    {credit.name}
                     </a>
                 );
             }
@@ -81,7 +81,7 @@ const fetchLibrary = async () => {
         docsURI: extension.docs ? `local/extensions/${extension.slug}` : null,
         samples: extension.samples ? extension.samples.map(sample => ({
             // href: `${process.env.ROOT}editor?project_url=https://extensions.turbowarp.org/samples/${encodeURIComponent(sample)}.sb3`,
-            href: `${process.env.ROOT}editor?project_url=${process.env.ROOT}local/extensions/samples/${encodeURIComponent(sample)}.sb3`,
+            href: `editor.html?project_url=` + location.origin +`/local/extensions/samples/${encodeURIComponent(sample)}.sb3`,
             text: sample
         })) : null,
         incompatibleWithScratch: true,
@@ -171,8 +171,8 @@ class ExtensionLibrary extends React.PureComponent {
                 const locale = this.props.intl.locale;
                 library.push(
                     ...this.state.gallery
-                        .map(i => translateGalleryItem(i, locale))
-                        .map(toLibraryItem)
+                    .map(i => translateGalleryItem(i, locale))
+                    .map(toLibraryItem)
                 );
             } else if (this.state.galleryError) {
                 library.push(toLibraryItem(galleryError));
@@ -183,15 +183,15 @@ class ExtensionLibrary extends React.PureComponent {
 
         return (
             <LibraryComponent
-                data={library}
-                filterable
-                persistableKey="extensionId"
-                id="extensionLibrary"
-                tags={extensionTags}
-                title={this.props.intl.formatMessage(messages.extensionTitle)}
-                visible={this.props.visible}
-                onItemSelected={this.handleItemSelect}
-                onRequestClose={this.props.onRequestClose}
+            data={library}
+            filterable
+            persistableKey="extensionId"
+            id="extensionLibrary"
+            tags={extensionTags}
+            title={this.props.intl.formatMessage(messages.extensionTitle)}
+            visible={this.props.visible}
+            onItemSelected={this.handleItemSelect}
+            onRequestClose={this.props.onRequestClose}
             />
         );
     }
