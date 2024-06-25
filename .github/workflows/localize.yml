@@ -17,4 +17,14 @@ jobs:
       - run: npm run build
         env:
           NODE_ENV: 'production'
-      - run: pwd && ls
+      - run: |
+          wget -m -p -np -k -x -P local -q https://extensions.turbowarp.org
+          mv local/extensions.turbowarp.org local/extensions
+          wget -x -P local/extensions https://extensions.turbowarp.org/generated-metadata/extensions-v0.json
+      - run: npm run localize
+      - run: |
+          mv local build/local && mv build turbowarp
+          zip -r -q turbowarp.zip turbowarp
+      - uses: actions/upload-artifact@v3
+        with:
+          name: 'turbowarp.zip'
