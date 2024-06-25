@@ -20,7 +20,7 @@ jobs:
       - run: |
           wget -m -p -np -k -x -P local -q https://extensions.turbowarp.org
           mv local/extensions.turbowarp.org local/extensions
-          wget -x -P local/extensions https://extensions.turbowarp.org/generated-metadata/extensions-v0.json
+          wget -P local/extensions https://extensions.turbowarp.org/generated-metadata/extensions-v0.json
       - run: npm run localize
       - run: |
           mv local build/local && mv build turbowarp
