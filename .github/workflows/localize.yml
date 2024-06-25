@@ -1,0 +1,28 @@
+# This workflow will build TurboWarp, clone online assets and extentions to run offline. 
+
+name: Localize TurboWarp
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm build
+
+  localize:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
