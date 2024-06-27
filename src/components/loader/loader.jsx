@@ -154,7 +154,8 @@ class LoaderComponent extends React.Component {
                             lang="en"
                         >
                             <b>{'Pride Month Fun Fact:'}</b>{' '}
-                            {'Sophie Wilson is a transgender computer scientist who co-designed the ARM instruction set used by many phones and computers.'}
+                            {/* eslint-disable-next-line max-len */}
+                            {'Significant parts of TurboWarp were created by transgender people.'}
                         </div>
                     )}
                 </div>
