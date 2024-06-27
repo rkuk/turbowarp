@@ -2,7 +2,7 @@ import {
     createClient
 } from "webdav";
 import {
-    exists,
+    existsSync,
     createReadStream
 } from "fs";
 import {
@@ -20,5 +20,5 @@ function push(filePath) {
 }
 
 const filePath = process.argv[2];
-if(filePath && exists(filePath))
+if(filePath && existsSync(filePath))
     push(filePath);
