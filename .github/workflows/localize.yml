@@ -9,8 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4 - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm install
@@ -25,7 +24,8 @@ jobs:
       - run: |
           mv local build/local && mv build turbowarp
           zip -r -q turbowarp.zip turbowarp
-      - uses: actions/upload-artifact@v3
-        with:
-          name: 'turbowarp.zip'
-          path: 'turbowarp'
+      - run: node localize/davPush.js turbowarp.zip
+        env:
+          DAV_URL: ${{ secrets.DAV_URL }}
+          DAV_USER: ${{ secrets.DAV_USER }}
+          DAV_PASS: ${{ secrets.DAV_PASS }}
