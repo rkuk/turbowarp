@@ -25,7 +25,7 @@ jobs:
       - run: |
           mv local build/local && mv build turbowarp
           zip -r -q turbowarp.zip turbowarp
-      - run: node localize/davPush.js turbowarp.zip
+      - run: node localize/davPush.mjs turbowarp.zip
         env:
           DAV_URL: ${{ secrets.DAV_URL }}
           DAV_USER: ${{ secrets.DAV_USER }}
