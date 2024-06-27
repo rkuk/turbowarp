@@ -22,3 +22,5 @@ function push(filePath) {
 const filePath = process.argv[2];
 if(filePath && existsSync(filePath))
     push(filePath);
+else
+    throw new Error(`Invalid file path: ${filePath}`);
