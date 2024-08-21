@@ -36,6 +36,7 @@ const isTrustedExtension = url => (
     url.startsWith('http://10.') ||
     url.startsWith('http://172.') ||
     url.startsWith('http://192.168.') ||
+    url.startsWith('https://') ||
 
     extensionsTrustedByUser.has(url)
 );
